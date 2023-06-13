@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List of games </title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">List of games</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/games}">List</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class="text-center"> Tell us about your game! </h1>
+      <div class="card-body">
+        <form th:action="@{/games/{id} (id=${game.id})}" th:object="${game}" method="POST">
+          <div class="form-group">
+            <label> Title: </label>
+            <input
+                    type="text"
+                    name="title"
+                    th:field="*{title}"
+                    class="form-control"
+                    placeholder="Enter title: "
+            />
+
+          </div>
+          <div class="form-group">
+            <label> Genre: </label>
+            <input
+                    type="text"
+                    name="genre"
+                    th:field="*{genre}"
+                    class="form-control"
+                    placeholder="Enter genre: "
+            />
+
+          </div>
+
+          <div class="form-group">
+            <label> Developer: </label>
+            <input
+                    type="text"
+                    name="developer"
+                    th:field="*{developer}"
+                    class="form-control"
+                    placeholder="Enter developer: "
+            />
+
+          </div>
+
+          <div class="form-group">
+            <label> Platform: </label>
+            <input
+                    type="text"
+                    name="platform"
+                    th:field="*{platform}"
+                    class="form-control"
+                    placeholder="Enter platform: "
+            />
+
+          </div>
+
+          <div class="form-group">
+            <label> Multiplayer: </label>
+            <input
+                    type="text"
+                    name="Multiplayer"
+                    th:field="*{multiplayer}"
+                    class="form-control"
+                    placeholder="Is it multiplayer? Please answer YES/NO: "
+            />
+
+          </div>
+
+          <div class="form-group">
+            <label> Free: </label>
+            <input
+                    type="text"
+                    name="Free"
+                    th:field="*{free}"
+                    class="form-control"
+                    placeholder="Is it free? Please answer YES/NO: "
+            />
+
+          </div>
+
+          <div class="footer-body">
+            <button type="submit" class="btn btn-primary">
+              Edit!
+            </button>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of games </title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">List of games</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/games}">List</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <div class = "container">
+        <div class = "row">
+            <h1> List of popular games </h1>
+
+        </div>
+
+        <div>
+            <h1> <p style="font-size: 20px"> Can't find your favourite game? </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href = "@{/games/new}" class="btn btn-primary btn sm mb-3"> Add it here! </a>
+            </div>
+
+        </div>
+
+        <table class = "table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th> Title </th>
+                    <th> Genre </th>
+                    <th> Developer </th>
+                    <th> Platform </th>
+                    <th> Multiplayer </th>
+                    <th> Free </th>
+                    <th> Found a mistake? </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each = "game: ${games}">
+                    <td th:text = "${game.title}"></td>
+                    <td th:text = "${game.genre}"></td>
+                    <td th:text = "${game.developer}"></td>
+                    <td th:text = "${game.platform}"></td>
+                    <td th:text = "${game.multiplayer}"></td>
+                    <td th:text = "${game.free}"></td>
+                    <td>
+                        <a th:href = "@{/games/edit/{id}(id=${game.id})}"
+                        class="btn btn-primary">Update
+                        </a>
+                        <a th:href = "@{/games/{id}(id=${game.id})}"
+                           class="btn btn-danger">Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
